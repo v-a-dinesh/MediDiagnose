@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MediDiagnose - Our Team</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="footer-styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --primary: #0062FF;
+        --primary-dark: #0048c2;
+        --secondary: #EAEFFF;
+        --accent: #00D1FF;
+        --text: #15173D;
+        --text-light: #596080;
+        --surface-1: #FFFFFF;
+        --surface-2: #F5F7FF;
+        --white: #FFFFFF;
+        --heading-font: 'Inter', sans-serif;
+        --body-font: 'Inter', sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--body-font);
+        background-color: var(--surface-2);
+        color: var(--text);
+        line-height: 1.6;
+        overflow-x: hidden;
+        margin: 0;
+      }
+
+      /* HEADER AND NAVIGATION - Match with global styles */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        padding: 1rem 0;
+        background-color: var(--surface-2);
+      }
+
+      .header.scrolled {
+        background-color: var(--surface-2);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      }
+      
+      .active-indicator {
+        display: block;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: var(--primary);
+      }
+
+      /* Team page styles - adjusted for header */
+      .team-header {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(242, 249, 255, 0.95) 100%);
+        padding: 4rem 2rem;
+        margin: 7rem auto 3rem; /* Updated top margin to account for fixed header */
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        max-width: 1200px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+      }
+      
+      .team-header h1 {
+        font-size: 2.5rem;
+        background: linear-gradient(90deg, var(--text) 0%, var(--primary) 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+      
+      .team-header p {
+        font-size: 1.1rem;
+        color: var(--text-light);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      
+      .team-section {
+        padding: 2rem 0 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .team-intro {
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        padding: 0 1rem;
+        position: relative;
+        text-align: center;
+      }
+
+      .team-intro p {
+        font-size: 1.1rem;
+        color: var(--text-light);
+        line-height: 1.8;
+      }
+
+      .team-intro::after {
+        content: '';
+        position: absolute;
+        bottom: -1.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+        border-radius: 3px;
+      }
+      
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--text);
+        margin-bottom: 2rem;
+        position: relative;
+        padding-bottom: 1rem;
+        font-weight: 700;
+      }
+      
+      .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+        border-radius: 3px;
+      }
+      
+      .team-member-container {
+        display: flex;
+        justify-content: center;
+        padding: 0 1rem;
+      }
+      
+      .team-member {
+        background: var(--surface-1);
+        border-radius: 20px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        max-width: 600px;
+        width: 100%;
+        padding: 2.5rem;
+        text-align: center;
+      }
+      
+      .team-member:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 60px rgba(0, 98, 255, 0.15);
+        border-color: rgba(0, 98, 255, 0.1);
+      }
+      
+      .member-image-container {
+        position: relative;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 2rem;
+        border: 4px solid var(--primary);
+        box-shadow: 0 10px 30px rgba(0, 98, 255, 0.2);
+      }
+      
+      .member-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.5s ease;
+        display: block;
+      }
+      
+      .team-member:hover .member-image {
+        transform: scale(1.1);
+      }
+      
+      .member-overlay {
+        display: none;
+      }
+      
+      .member-details {
+        text-align: center;
+      }
+      
+      .member-name {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+        margin-bottom: 0.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+      }
+      
+      .member-name::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+        transition: width 0.3s ease;
+      }
+      
+      .team-member:hover .member-name {
+        color: var(--primary);
+      }
+      
+      .team-member:hover .member-name::after {
+        width: 100%;
+      }
+      
+      .member-role {
+        display: block;
+        font-size: 1rem;
+        color: white;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        padding: 0.5rem 1.5rem;
+        border-radius: 30px;
+        margin: 1rem auto 2rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 15px rgba(0, 98, 255, 0.3);
+        width: fit-content;
+      }
+      
+      .member-bio {
+        color: var(--text-light);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .skills-section {
+        margin-bottom: 2rem;
+      }
+      
+      .skills-label {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      
+      .skills-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+      
+      .skill-tag {
+        background: linear-gradient(135deg, rgba(0, 98, 255, 0.1) 0%, rgba(0, 209, 255, 0.1) 100%);
+        color: var(--primary);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        border: 1px solid rgba(0, 98, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+      
+      .skill-tag:hover {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 98, 255, 0.3);
+      }
+      
+      .social-links {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+      }
+      
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        font-size: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .social-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .social-link.linkedin {
+        background-color: #0077B5;
+        color: white;
+      }
+      
+      .social-link.github {
+        background-color: #24292e;
+        color: white;
+      }
+      
+      .social-link:hover {
+        transform: translateY(-5px) rotate(10deg);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+      
+      .social-link:hover::before {
+        opacity: 0.9;
+      }
+      
+      .social-link i {
+        position: relative;
+        z-index: 1;
+      }
+      
+      @media (max-width: 768px) {
+        .team-header {
+          padding: 3rem 1.5rem;
+          margin: 6rem auto 2rem;
+        }
+        
+        .team-header h1 {
+          font-size: 2rem;
+        }
+        
+        .section-title {
+          font-size: 2rem;
+        }
+        
+        .member-image-container {
+          height: 250px;
+        }
+        
+        .member-details {
+          padding: 2rem 1.5rem;
+        }
+        
+        .member-name {
+          font-size: 1.6rem;
+        }
+        
+        .skills-tags {
+          gap: 0.5rem;
+        }
+        
+        .social-links {
+          gap: 1rem;
+        }
+        
+        .social-link {
+          width: 45px;
+          height: 45px;
+          font-size: 1.3rem;
+        }
+        
+        /* Mobile navigation styling */
+        .nav-links {
+          display: none;
+        }
+        
+        .nav-links.show {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          background-color: var(--surface-2);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+          padding: 1rem 0;
+          z-index: 1000;
+          animation: fade-in-down 0.3s ease forwards;
+        }
+        
+        .nav-links.show a {
+          padding: 0.75rem 2rem;
+          width: 100%;
+          text-align: center;
+        }
+        
+        .mobile-menu-button {
+          display: block;
+        }
+      }
+
+      @keyframes fade-in-down {
+        0% { opacity: 0; transform: translateY(-20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fade-in-up {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fade-in-scale {
+        0% { opacity: 0; transform: scale(0.9); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+      }
+
+      .animate-on-scroll.animated {
+        animation-duration: 0.8s;
+        animation-fill-mode: forwards;
+      }
+
+      .fade-in-down.animated {
+        animation-name: fade-in-down;
+      }
+
+      .fade-in-up.animated {
+        animation-name: fade-in-up;
+      }
+
+      .fade-in-scale.animated {
+        animation-name: fade-in-scale;
+      }
+
+      .delay-1 {
+        animation-delay: 0.2s;
+      }
+
+      .delay-2 {
+        animation-delay: 0.4s;
+      }
+
+      .delay-3 {
+        animation-delay: 0.6s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <div id="nav-placeholder"></div>
+
+    <main>
+      <div class="container">
+        <!-- Team Header -->
+        <div class="team-header animate-on-scroll fade-in-down">
+          <h1>Meet Our Team</h1>
+          <p>The brilliant mind behind MediScan's revolutionary AI-powered medical imaging platform</p>
+        </div>
+
+        <!-- Development Team Section -->
+        <section class="team-section animate-on-scroll fade-in-up">
+          <h2 class="section-title animate-on-scroll fade-in-down">Our Developer</h2>
+          
+          <div class="team-intro animate-on-scroll fade-in-up delay-1">
+            <p>
+              MediScan is the brainchild of a passionate AI/ML engineer dedicated to revolutionizing 
+              healthcare through cutting-edge technology. With expertise spanning the entire development 
+              stack, our developer has created a comprehensive platform that brings advanced medical 
+              imaging analysis to healthcare professionals worldwide.
+            </p>
+          </div>
+
+          <div class="team-member-container">
+            <!-- V A Dinesh -->
+            <div class="team-member animate-on-scroll fade-in-scale delay-2">
+              <div class="member-image-container">
+                <img 
+                  src="https://avatars.githubusercontent.com/u/144203522?v=4" 
+                  alt="V A Dinesh" 
+                  class="member-image"
+                >
+                <div class="member-overlay"></div>
+              </div>
+              <div class="member-details">
+                <h3 class="member-name">V A Dinesh</h3>
+                <span class="member-role">Full Stack AI/ML Engineer</span>
+                <p class="member-bio">
+                  Visionary AI/ML engineer and healthcare technology innovator with deep expertise in 
+                  machine learning, computer vision, and end-to-end software development. Specializes 
+                  in translating complex medical imaging challenges into intelligent, scalable solutions 
+                  that empower healthcare professionals worldwide. Passionate about bridging the gap 
+                  between advanced AI research and practical clinical applications, with a proven track 
+                  record of developing robust diagnostic tools that enhance accuracy, reduce processing 
+                  time, and ultimately save lives through technology-driven medical innovation.
+                </p>
+                
+                <div class="skills-section">
+                  <div class="skills-label">Technical Expertise</div>
+                  <div class="skills-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Deep Learning</span>
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">YOLOv8</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">OpenCV</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">HTML/CSS</span>
+                    <span class="skill-tag">Medical Imaging</span>
+                  </div>
+                </div>
+                
+                <div class="social-links">
+                  <a 
+                    href="https://www.linkedin.com/in/dineshva/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="social-link linkedin"
+                    title="LinkedIn"
+                  ><i class="fab fa-linkedin-in"></i></a>
+                  <a 
+                    href="https://github.com/v-a-dinesh" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="social-link github"
+                    title="GitHub"
+                  ><i class="fab fa-github"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Handle header scrolling effect
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+        });
+        
+        // Mobile menu functionality
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (menuButton) {
+          menuButton.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+          });
+        }
+        
+        // Scroll-triggered animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px"
+        };
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        const animationObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animated');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+        animatedElements.forEach(element => {
+          animationObserver.observe(element);
+        });
+      });
+    </script>
+    
+    <!-- Footer handler script -->
+    <script src="footer-handler.js"></script>
+    <!-- Nav handler script -->
+    <script src="nav-handler.js"></script>
+  </body>
+</html>
