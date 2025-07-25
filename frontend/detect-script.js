@@ -1,8 +1,8 @@
 // MediScan - Frontend Script
 document.addEventListener('DOMContentLoaded', function() {
     // Backend API URL - update this to match your server address
-    const API_URL = 'http://localhost:8000';
-    
+    // const API_URL = 'http://localhost:8000';
+    const API_URL = 'https://medidiagnose-ozw3.onrender.com';
     // Elements
     const dropArea = document.getElementById('drop-area');
     const browseBtn = document.getElementById('browse-btn');
